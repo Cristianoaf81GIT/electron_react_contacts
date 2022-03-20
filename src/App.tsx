@@ -1,19 +1,7 @@
-import React from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+import FormLogin from "./features/login-signup";
 
-function App() {
-  return (
-    <div>
-      <Button variant="contained" color="primary">
-        test
-      </Button>
-      <TextField value="teste" color="primary" />
-      <Button variant="contained" color="secondary">
-        test
-      </Button>
-    </div>
-  );
+export function App() {
+  return <FormLogin />;
 }
 
 export default App;

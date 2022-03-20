@@ -42,41 +42,47 @@ declare module '@mui/material/styles' {
 }
 
 const main = createTheme({
+  common: {
+    black: colors.black.dark,
+    white: '#ffffff'
+  },
   palette: {
     primary: {
-      main: colors.yellow.main,
-      light: colors.yellow.light,
-      dark: colors.yellow.dark,
-      contrastText: colors.yellow.contrastText
+      main: colors.green.main,
+      light: colors.green.light,
+      dark: colors.green.dark,
+      contrastText: colors.green.contrastText
     },
     secondary: {
-      main: colors.black.main,
-      light: colors.black.light,
-      dark: colors.black.dark,
-      contrastText: colors.black.contrastText
+      main: colors.red.main,
+      light: colors.red.light,
+      dark: colors.red.dark,
+      contrastText: colors.red.contrastText
     }
   },
   components: {
-    MuiButton: {
+    MuiButton: {   
       defaultProps: {
+        variant: "contained",
         disableElevation: true,
         style: {
-          borderRadius: 1,
-          minHeight: 38,          
+          borderRadius: 2,
+          minHeight: 38,
+          boxShadow: `2px 2px ${colors.blueGrey.light}`          
         }       
       },      
     },
     MuiCard: {
       defaultProps: {
         style: {
-          borderRadius: 1,         
+          borderRadius: 2,         
         }
       }
     },
     MuiInputBase: {
       defaultProps: {        
         style: {
-          borderRadius: 1,
+          borderRadius: 2,
           height: 40,
           padding: 0,
           borderWidth: 1,

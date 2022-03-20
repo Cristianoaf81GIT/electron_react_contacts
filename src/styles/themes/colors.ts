@@ -1,5 +1,5 @@
-import { yellow, blueGrey, grey} from '@mui/material/colors';
-import { TMaterialColors } from '.';
+import { yellow, blueGrey } from '@mui/material/colors';
+import { TMaterialColors } from './types';
 
 export const colors: TMaterialColors = {
   yellow: {
@@ -18,6 +18,18 @@ export const colors: TMaterialColors = {
     main: '#333333',
     light: '#3d3d3d',
     dark: '#000000',
+    contrastText: '#ffffff' 
+  },
+  green: {
+    main: '#78c2ad',
+    light: '#9bd2c2',
+    dark: '#66baa2',
+    contrastText: '#ffffff' 
+  },
+  red: {
+    main: '#f3969a',
+    light: '#f8c4c6',
+    dark: '#f07f84',
     contrastText: '#ffffff' 
   },
 };
