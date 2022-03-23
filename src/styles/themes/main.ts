@@ -41,6 +41,7 @@ declare module '@mui/material/styles' {
   }
 }
 
+
 const main = createTheme({
   common: {
     black: colors.black.dark,
@@ -95,9 +96,10 @@ const main = createTheme({
     },
     MuiTextField: {
       defaultProps: {
-        variant: "outlined"
+        variant: "standard",        
       }
-    }
+    },
+    
   }
 });
 

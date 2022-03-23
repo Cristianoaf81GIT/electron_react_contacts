@@ -1,4 +1,5 @@
-import { ButtonProps, TextFieldProps } from "@mui/material"
+import { BaseTextFieldProps } from "@mui/material";
+import { ButtonProps, TextFieldProps } from "@mui/material";
 
 export declare interface FormComponentsProps {
   Button: (props: ButtonProps) => JSX.Element,
@@ -6,6 +7,5 @@ export declare interface FormComponentsProps {
 }
 
 export interface FieldProps {
-  props: ButtonProps & TextFieldProps
-  type: string;
+  props: ButtonProps & TextFieldProps & BaseTextFieldProps  
 }
