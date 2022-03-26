@@ -2,16 +2,13 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material";
-import { colors } from "../../styles/themes/colors";
+import { SPACING } from "../../styles/themes/spacing";
 
 const MuiThemedAppBar = styled(AppBar)(({ theme }) => ({
   "&.MuiAppBar-root": {
     borderRadius: 2,
-    boxShadow: `2px 2px ${colors.blueGrey.light}`,
+    boxShadow: `${SPACING[4]}px ${SPACING[4]}px ${SPACING[8]}px ${theme.extraColors.blueGrey.light}`,
     marginBottom: theme.spacing(2),
-  },
-  "&.MuiAppBar-root:hover": {
-    boxShadow: `1px 1px 1px ${colors.blueGrey.light}`,
   },
 }));
 

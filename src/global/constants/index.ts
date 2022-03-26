@@ -1,4 +1,6 @@
 export const FORM_ELEMENTS = {
   TEXT: "TextField",
-  BUTTON: "Button"
+  BUTTON: "Button",
+  BOX: "Box",
+  TYPOGRAPHY: "Typography",
 }

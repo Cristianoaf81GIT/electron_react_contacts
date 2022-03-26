@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import { colors } from './colors';
+import { SPACING } from './spacing';
 
 declare module '@mui/material/styles' {
   interface Theme {
@@ -19,6 +20,14 @@ declare module '@mui/material/styles' {
       dark: string;
       contrastText: string;
     },
+    extraColors: {
+      blueGrey: {
+        main: string;
+        light: string;
+        dark: string;
+        contrastText: string;
+      },
+    }
   }
   // allow configuration using `createTheme`
   interface ThemeOptions {
@@ -37,7 +46,15 @@ declare module '@mui/material/styles' {
       light?: string;
       dark?: string;
       contrastText?: string;
-    },   
+    },
+    extraColors: {
+      blueGrey?: {
+        main?: string;
+        light?: string;
+        dark?: string;
+        contrastText?: string;
+      },
+    }
   }
 }
 
@@ -59,7 +76,15 @@ const main = createTheme({
       light: colors.red.light,
       dark: colors.red.dark,
       contrastText: colors.red.contrastText
-    }
+    },
+  },
+  extraColors: {
+    blueGrey: {
+      main: colors.blueGrey.main,
+      light: colors.blueGrey.light,
+      dark: colors.blueGrey.dark,
+      contrastText: colors.blueGrey.contrastText
+    },
   },
   components: {
     MuiButton: {   
@@ -67,27 +92,27 @@ const main = createTheme({
         variant: "contained",
         disableElevation: true,
         style: {
-          borderRadius: 2,
-          minHeight: 38,
-          boxShadow: `2px 2px ${colors.blueGrey.light}`          
+          borderRadius: SPACING[2],
+          minHeight: SPACING[40],
+          boxShadow: `${SPACING[2]}px ${SPACING[2]}px ${colors.blueGrey.light}`          
         }       
       },      
     },
     MuiCard: {
       defaultProps: {
         style: {
-          borderRadius: 2,         
+          borderRadius: SPACING[2],         
         }
       }
     },
     MuiInputBase: {
       defaultProps: {        
         style: {
-          borderRadius: 2,
-          height: 40,
-          padding: 0,
-          borderWidth: 1,
-          minHeight: 38,            
+          borderRadius: SPACING[8],
+          height: SPACING[40],
+          padding: SPACING[0],
+          borderWidth: SPACING[1],
+          minHeight: SPACING[40],            
         }
       },
       styleOverrides: {
@@ -102,6 +127,7 @@ const main = createTheme({
     
   }
 });
+
 
 export {
   main,
