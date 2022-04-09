@@ -94,7 +94,8 @@ const main = createTheme({
         style: {
           borderRadius: SPACING[2],
           minHeight: SPACING[40],
-          boxShadow: `${SPACING[2]}px ${SPACING[2]}px ${colors.blueGrey.light}`          
+          boxShadow: `${SPACING[2]}px ${SPACING[2]}px ${colors.blueGrey.light}`,
+          textTransform: 'lowercase',          
         }       
       },      
     },

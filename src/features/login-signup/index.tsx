@@ -39,6 +39,7 @@ export function FormLogin(): JSX.Element {
     validationSchema: ValidationSchema,
     onSubmit: (values: LoginFormData) => {
       if (createNewAccount) {
+        console.log(values, "valores");
         // chamar endpoint para criar conta
       } else {
         // chamar endpoint para logar usuário
@@ -60,14 +61,26 @@ export function FormLogin(): JSX.Element {
           <Logo style={SxStyles.logoStyle} />
           {LoginSchema.map((schema: TFormSchemaItem) => (
             <React.Fragment>
-              {schema.fieldType === FORM_ELEMENTS.TEXT && (
-                <Grid item xs={12}>
-                  <FormElement
-                    key={schema.id}
-                    props={addFormSchemaEvents<LoginFormData>(schema, formik)}
-                  />
-                </Grid>
-              )}
+              {createNewAccount &&
+                schema.fieldType === FORM_ELEMENTS.TEXT &&
+                schema.id === CONFIG_LOGIN_SIGNUP.FIELD_FULL_NAME_ID && (
+                  <Grid item xs={12}>
+                    <FormElement
+                      key={schema.id}
+                      props={addFormSchemaEvents<LoginFormData>(schema, formik)}
+                    />
+                  </Grid>
+                )}
+
+              {schema.fieldType === FORM_ELEMENTS.TEXT &&
+                schema.id !== CONFIG_LOGIN_SIGNUP.FIELD_FULL_NAME_ID && (
+                  <Grid item xs={12}>
+                    <FormElement
+                      key={schema.id}
+                      props={addFormSchemaEvents<LoginFormData>(schema, formik)}
+                    />
+                  </Grid>
+                )}
               {schema.fieldType === FORM_ELEMENTS.BUTTON && (
                 <Box sx={SxStyles.buttonsContainer}>
                   <FormElement
@@ -79,7 +92,7 @@ export function FormLogin(): JSX.Element {
             </React.Fragment>
           ))}
           <Grid item xs={12}>
-            <Box sx={SxStyles.newAccountDetailsContainer}>
+            <Box sx={SxStyles.newAccountDetailsContainer(createNewAccount)}>
               {LoginSchema.map((schema: TFormSchemaItem) => (
                 <React.Fragment>
                   {schema.fieldType === FORM_ELEMENTS.TYPOGRAPHY && (

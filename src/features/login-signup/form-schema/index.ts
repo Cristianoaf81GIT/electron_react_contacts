@@ -1,9 +1,19 @@
 import { TFormSchemaItem } from "../../../global/types";
 import * as Yup from "yup";
 
-export const formInitialValues = { "login-email": "", "login-password": "" };
+export const formInitialValues = { "login-email": "", "login-password": "", "login-fullname": "" };
 
 export const LoginSchema: TFormSchemaItem[] = [
+  {
+    id: "00",
+    name: "login-fullname",
+    label: "full name",
+    fieldType: "TextField",
+    type: "text",
+    fullWidth: true,
+    variant: "standard",
+    error: false,    
+  },
   {
     id: "01",
     name: "login-email",
@@ -32,7 +42,8 @@ export const LoginSchema: TFormSchemaItem[] = [
     fieldType: "Button",
     type: "submit",
     color: "primary",
-    fullWidth: false,    
+    fullWidth: false,
+    buttonVariant: "contained",    
   },
   {
     id:  "03",
@@ -41,7 +52,8 @@ export const LoginSchema: TFormSchemaItem[] = [
     fieldType: "Button",
     type: "reset",
     color: "secondary",
-    fullWidth: false
+    fullWidth: false,
+    buttonVariant: "contained"
   },
   {
     id: "04",

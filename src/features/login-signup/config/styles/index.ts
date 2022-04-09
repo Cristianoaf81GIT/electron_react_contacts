@@ -15,13 +15,13 @@ const logoStyle = {
   marginRight: "auto",
 }
 
-const newAccountDetailsContainer: SxProps<Theme> | undefined = {
+const newAccountDetailsContainer = (newAccount: boolean): SxProps<Theme> => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-evenly', 
-  mt: 5,
-};
+  mt: !newAccount ? 5 : 2,
+});
 
 const newAccountQuestion: SxProps<Theme> | undefined = {
   fontWeight: SPACING[256] + SPACING[40] + SPACING[4],

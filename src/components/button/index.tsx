@@ -5,13 +5,20 @@ import { colors } from "../../styles/themes/colors";
 import { SPACING } from "../../styles/themes/spacing";
 
 function MuiThemedButton(props: ButtonProps): JSX.Element {
-  const { buttonText } = props;
+  const { buttonText, buttonVariant } = props;
   const MuiCustomButton = styled(Button)({
     "&:hover": {
-      boxShadow: `${SPACING[1]}px ${SPACING[1]}px ${colors.blueGrey.light} !important`,
+      boxShadow:
+        buttonVariant && buttonVariant !== "outlined"
+          ? `${SPACING[1]}px ${SPACING[1]}px ${colors.blueGrey.light} !important`
+          : "none",
     },
   });
-  return <MuiCustomButton {...props}>{buttonText}</MuiCustomButton>;
+  return (
+    <MuiCustomButton {...props} variant={buttonVariant || "contained"}>
+      {buttonText}
+    </MuiCustomButton>
+  );
 }
 
 export default MuiThemedButton;

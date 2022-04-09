@@ -13,6 +13,7 @@ import { string } from "yup";
 
 declare module "@mui/material" {
   declare type fieldTypeValues = "TextField" | "Button" | "Table" | "Checkbox" | "Box" | "Typography" ;
+  declare type ButtonVariants = "contained" | "outlined" | "text";
   interface BaseTextFieldProps {
     fieldType?: fieldTypeValues;   
   } 
@@ -20,6 +21,7 @@ declare module "@mui/material" {
   interface ButtonProps {
     buttonText?: string;
     fieldType?: fieldTypeValues;
+    buttonVariant?: ButtonVariants
   }
 
   interface TypographyProps {

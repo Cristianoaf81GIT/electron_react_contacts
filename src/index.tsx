@@ -5,12 +5,14 @@ import "./styles/index.css";
 import App from "./App";
 import "@fontsource/roboto";
 import { main } from "./styles/themes/main";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <ThemeProvider theme={main}>
       <App />
     </ThemeProvider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById("root")
 );
