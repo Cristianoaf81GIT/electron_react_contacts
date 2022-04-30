@@ -52,6 +52,8 @@ declare module "@mui/material" {
     children?: JSX.Element;
     sx?: SxProps<Theme>
     onClick?: (evt?: any) => any;
+    id?: string;
+    name?: string;
   }
 }
 
@@ -59,5 +61,5 @@ export type TFormSchemaItem = TextFieldProps
 & BaseTextFieldProps 
 & CheckboxProps 
 & TableProps 
-& ButtonProps & TypographyProps;
+& ButtonProps & TypographyProps & JSX.IntrinsicAttributes;
 

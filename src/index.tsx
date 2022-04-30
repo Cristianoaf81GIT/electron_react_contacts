@@ -7,11 +7,14 @@ import "@fontsource/roboto";
 import { main } from "./styles/themes/main";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { SnackBarProvider } from "./context/snackbar";
 
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={main}>
-      <App />
+      <SnackBarProvider>
+        <App />
+      </SnackBarProvider>
     </ThemeProvider>
   </Provider>,
   document.getElementById("root")

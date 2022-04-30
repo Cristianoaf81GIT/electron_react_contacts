@@ -20,7 +20,7 @@ const newAccountDetailsContainer = (newAccount: boolean): SxProps<Theme> => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-evenly', 
-  mt: !newAccount ? 5 : 2,
+  mt: !newAccount ? 5 : 0,
 });
 
 const newAccountQuestion: SxProps<Theme> | undefined = {
@@ -51,14 +51,14 @@ const newAccountLinkButton: SxProps<Theme> | undefined = {
   },  
 }
 
-const buttonsContainer: SxProps<Theme> | undefined = {
+const buttonsContainer = (newAccount: boolean): SxProps<Theme> | undefined => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "flex-start",
   justifyContent: "space-evenly",
-  marginTop: SPACING[4],
+  marginTop: !newAccount ? SPACING[8] : SPACING[4],
   padding: SPACING[2],
-}
+});
 
 export const SxStyles = {
   mainContainerStyle,

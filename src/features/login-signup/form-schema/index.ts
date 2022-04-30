@@ -7,7 +7,7 @@ export const LoginSchema: TFormSchemaItem[] = [
   {
     id: "00",
     name: "login-fullname",
-    label: "full name",
+    label: "Nome completo",
     fieldType: "TextField",
     type: "text",
     fullWidth: true,
@@ -17,7 +17,7 @@ export const LoginSchema: TFormSchemaItem[] = [
   {
     id: "01",
     name: "login-email",
-    label: "e-mail",
+    label: "E-mail",
     fieldType: "TextField",
     type: "text",
     fullWidth: true,
@@ -28,7 +28,7 @@ export const LoginSchema: TFormSchemaItem[] = [
   {
     id:  "02",
     name: "login-password",
-    label: "password",
+    label: "Senha",
     fieldType: "TextField",
     type: "password",
     fullWidth: true,

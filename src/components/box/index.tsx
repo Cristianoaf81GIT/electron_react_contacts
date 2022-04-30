@@ -1,6 +1,6 @@
 import { BoxProps, Box } from "@mui/material";
 
-export function MuiBox(props: BoxProps): JSX.Element {
+export function MuiBox(props: BoxProps & JSX.IntrinsicAttributes): JSX.Element {
   const { children, fieldtext, sx, onClick } = props;
   const resolveBoxContent = (): JSX.Element | string => {
     if (children) return children;
@@ -14,7 +14,7 @@ export function MuiBox(props: BoxProps): JSX.Element {
   };
 
   return (
-    <Box sx={sx} onClick={(evt: any) => handleClick(evt)}>
+    <Box sx={sx} onClick={(evt: any) => handleClick(evt)} {...props}>
       {resolveBoxContent()}
     </Box>
   );
