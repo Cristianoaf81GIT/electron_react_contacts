@@ -29,18 +29,18 @@ export function FormLogin(): JSX.Element {
     initialValues: formInitialValues,
     validationSchema: ValidationSchema,
     onSubmit: async (values: LoginFormData) => {
-      console.log(values, "valores");
       if (createNewAccount) {
         const result = await loginSignupService.createNewAccount(values);
         snackBarControls.setMessage("Successo, usuário criado com sucesso!");
         snackBarControls.setOpen(result);
-        // TODO
-        // 1 - toda vez que o usuário criar conta
-        //  1.1 - trocar campo full name
-        //  1.2 - trocar texto do botão cadastrar
-        //  1.3 - trocar o texto do link
+        switch2NewAccount();
       } else {
-        // chamar endpoint para logar usuário
+        const result = await loginSignupService.login(values);
+        // TODO
+        // 1 - Acrescentar guarded route
+        // 2 - acrescentar botao logout/settings no header (condicional)
+        // 3 - acrescentar tsdocs nos métodos de login-signup
+        // 4 - criar componente inicial para tela de crud de contatos
       }
     },
   });
@@ -59,12 +59,10 @@ export function FormLogin(): JSX.Element {
     )[0];
 
     if (createNewAccount) {
-      console.log(createNewAccount, "teste if");
       btnLogin.innerText = CONFIG_LOGIN_SIGNUP.SUBMIT_BTN_SIGNUP_TEXT;
       newAccountLink.innerText = CONFIG_LOGIN_SIGNUP.LOGIN_LINK_TEXT;
       loginAccountQuestion.innerText = CONFIG_LOGIN_SIGNUP.LGN_QST_HAS_ACC;
     } else {
-      console.log(createNewAccount, "teste else");
       btnLogin.innerText = CONFIG_LOGIN_SIGNUP.SUBMIT_BTN_LOGIN_TEXT;
       newAccountLink.innerText = CONFIG_LOGIN_SIGNUP.LGN_LNK_TEXT_CREATE_ACCNT;
       loginAccountQuestion.innerText = CONFIG_LOGIN_SIGNUP.LGN_QST_NOT_HAS_ACC;

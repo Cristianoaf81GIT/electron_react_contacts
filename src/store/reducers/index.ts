@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { TUserLoginState, userLoginReducer } from '../reducers/user.reducer';
 
-export interface TCombineState {
+export interface ICombineState {
  userLogin: TUserLoginState, 
 }
 

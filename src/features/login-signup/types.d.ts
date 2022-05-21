@@ -4,11 +4,17 @@ export interface LoginFormData {
   "login-password": string;
 }
 
-export interface SignUpFormData {
+export interface SignUpData {
   fullName: string;
   email: string;
   password: string;
 }
+
+export interface LoginData {
+  email: string;
+  password: string;
+}
+
 export interface User extends SignUpFormData {
   id: number;
   createdAt: string;

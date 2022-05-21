@@ -10,8 +10,7 @@ export function addFormSchemaEvents<T>(
 ): TFormSchemaItem {
   if (schema.type === "reset") schema.onClick = formik.resetForm as any;
   if (customOnClick !== undefined) {     
-    schema.onClick = customOnClick;
-    
+    schema.onClick = customOnClick;    
   } 
   schema.onChange = formik.handleChange;
   schema.value = formik.values[schema.name as keyof unknown];
