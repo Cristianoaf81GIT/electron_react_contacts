@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, shallowEqual } from "react-redux";
 import FormLogin from "./features/login-signup";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/header";
 import { ICombineState } from "./store/reducers";
+import { GuardedRoute } from "./components/guarded-route";
 
 export function App() {
   const userData = useSelector(
@@ -11,19 +12,22 @@ export function App() {
     shallowEqual
   );
 
-  useEffect(() => {
-    if (userData && userData.token !== "" && userData.refreshToken !== "") {
-      window.alert(`${JSON.stringify(userData)}`);
-    }
-  }, [userData]);
+  function Test(): JSX.Element {
+    return <>test</>;
+  }
 
   return (
     <React.Fragment>
-      <Header />
+      <Header userLoginData={userData} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<FormLogin />} />
-          <Route path="/test" element={<>Test</>} />
+          <Route
+            path="/contact"
+            element={
+              <GuardedRoute userLoginData={userData}>{Test}</GuardedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </React.Fragment>

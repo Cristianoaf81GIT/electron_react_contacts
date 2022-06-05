@@ -29,8 +29,9 @@ class LoginSignupService {
       console.log(response, 'dados de login');
       store.dispatch(
         AllActions.userLoginAction(
-          response.data.token,
-          response.data.refresh_token
+          response.data.access_token,
+          response.data.refresh_token,
+          response.data.user_name
       ));      
       return true;
     } catch (error) {

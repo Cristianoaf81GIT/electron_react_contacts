@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Box, Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import {
   LoginSchema,
   ValidationSchema,
@@ -20,6 +21,7 @@ import { useSnackBar } from "../../context/snackbar/snackbar.hook";
 export function FormLogin(): JSX.Element {
   const [createNewAccount, setCreateNewAccount] = useState<boolean>(false);
   const snackBarControls = useSnackBar();
+  const navigate = useNavigate();
 
   const switch2NewAccount = (): void => {
     setCreateNewAccount(!createNewAccount);
@@ -36,11 +38,22 @@ export function FormLogin(): JSX.Element {
         switch2NewAccount();
       } else {
         const result = await loginSignupService.login(values);
+        if (!result) {
+          snackBarControls.setMessage(
+            "Oops.., parece que tivemos um problema, verifique seus dados de login e tente novamente!"
+          );
+          snackBarControls.setOpen(true);
+        } else {
+          navigate("/contact");
+        }
+
         // TODO
-        // 1 - Acrescentar guarded route
-        // 2 - acrescentar botao logout/settings no header (condicional)
-        // 3 - acrescentar tsdocs nos métodos de login-signup
-        // 4 - criar componente inicial para tela de crud de contatos
+        // 1 - Acrescentar guarded route [ok]
+        // 2 - acrescentar botao logout/settings no header (condicional)[ok]
+        // 3 - acrescantar modal de confirmação de logout no menu do header[prox]
+        // 4 - caso usuário configur saida realizar logout e redirecionanar para form signup/login
+        // 5 - acrescentar tsdocs nos métodos de login-signup
+        // 6 - criar componente inicial para tela de crud de contatos
       }
     },
   });

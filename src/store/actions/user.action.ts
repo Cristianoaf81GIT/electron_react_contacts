@@ -5,15 +5,17 @@ export type TUserLoginAction = {
   payload?: {
     token: string;
     refreshToken: string;
+    userName: string;
   }
 }
 
-export function userLoginAction(token: string, refreshToken: string): TUserLoginAction {
+export function userLoginAction(token: string, refreshToken: string, userName: string): TUserLoginAction {
  return {
   type: SET_USER_TOKEN,
   payload: {
     token,
-    refreshToken
+    refreshToken,
+    userName
   }
  }
 }

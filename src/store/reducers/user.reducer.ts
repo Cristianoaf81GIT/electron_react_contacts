@@ -4,11 +4,13 @@ import { TUserLoginAction } from '../actions/user.action';
 export type TUserLoginState = {
   token: string;
   refreshToken: string;
+  userName: string;
 }
 
 const userLoginInitialState: TUserLoginState =  {
   token: '',
   refreshToken: '',
+  userName: ''
 };
 
 export function userLoginReducer(

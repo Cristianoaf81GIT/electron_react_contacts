@@ -2,6 +2,7 @@
   "name": "contacts",
   "version": "0.1.0",
   "title": "Contatos",
+  "license": "MIT",
   "private": true,
   "main": "public/electron.js",
   "dependencies": {
