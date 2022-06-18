@@ -17,6 +17,7 @@ import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { CONFIG_LOGIN_SIGNUP } from "./config/constants";
 import { loginSignupService } from "./service/login-signup.service";
 import { useSnackBar } from "../../context/snackbar/snackbar.hook";
+import { GRID_DIRECTIONS } from "../../styles/themes/grids";
 
 export function FormLogin(): JSX.Element {
   const [createNewAccount, setCreateNewAccount] = useState<boolean>(false);
@@ -50,9 +51,9 @@ export function FormLogin(): JSX.Element {
         // TODO
         // 1 - Acrescentar guarded route [ok]
         // 2 - acrescentar botao logout/settings no header (condicional)[ok]
-        // 3 - acrescantar modal de confirmação de logout no menu do header[prox]
-        // 4 - caso usuário configur saida realizar logout e redirecionanar para form signup/login
-        // 5 - acrescentar tsdocs nos métodos de login-signup
+        // 3 - acrescantar modal de confirmação de logout no menu do header[ok]
+        // 4 - caso usuário configur saida realizar logout e redirecionanar para form signup/login[ok]
+        // 5 - acrescentar tsdocs nos métodos de login-signup[prox]
         // 6 - criar componente inicial para tela de crud de contatos
       }
     },
@@ -87,7 +88,7 @@ export function FormLogin(): JSX.Element {
       <form onSubmit={formik.handleSubmit}>
         <Grid
           container
-          direction="row"
+          direction={GRID_DIRECTIONS.ROW}
           alignItems="center"
           justifyContent="center"
           spacing={2}

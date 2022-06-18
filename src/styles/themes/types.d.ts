@@ -30,3 +30,11 @@ export type TMaterialColors = {
     contrastText: string;    
   },
 }
+
+
+export type TGridDirections =  {
+  ROW: "row";
+  ROW_REVERSE: "row-reverse";
+  COLUMN: "column";
+  COLUMN_REVERSE: "column-reverse";
+}

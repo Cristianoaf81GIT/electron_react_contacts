@@ -14,10 +14,13 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import BuildIcon from "@mui/icons-material/Build";
 import { SPACING } from "../../styles/themes/spacing";
 import { HeaderProps } from "./types";
+import { AlertDialogSlide } from "../dialog";
+import { AllActions } from "../../store/actions";
 
 const MuiThemedAppBar = styled(AppBar)(({ theme }) => ({
   "&.MuiAppBar-root": {
@@ -47,6 +50,8 @@ function stringAvatar(name: string) {
 
 export function Header({ userLoginData: userData }: HeaderProps): JSX.Element {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -56,7 +61,17 @@ export function Header({ userLoginData: userData }: HeaderProps): JSX.Element {
     setAnchorElUser(null);
   };
 
-  // https://mui.com/pt/material-ui/react-app-bar/
+  const toggleExitModal = (): void => {
+    setOpenModal(!openModal);
+    handleCloseUserMenu();
+  };
+
+  const doLogout = (): void => {
+    toggleExitModal();
+    setTimeout(() => {
+      dispatch(AllActions.userLoginAction("", "", ""));
+    }, 500);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -102,11 +117,11 @@ export function Header({ userLoginData: userData }: HeaderProps): JSX.Element {
 
                   <MenuItem
                     key={`logout`}
-                    onClick={handleCloseUserMenu}
+                    onClick={toggleExitModal}
                     sx={{ "&:hover": { color: "info.main" } }}
                   >
                     <ListItemIcon>
-                      <MeetingRoomIcon fontSize="small" color="secondary" />
+                      <MeetingRoomIcon fontSize="small" color="info" />
                     </ListItemIcon>
                     <Typography textAlign="center">Sair</Typography>
                   </MenuItem>
@@ -116,6 +131,16 @@ export function Header({ userLoginData: userData }: HeaderProps): JSX.Element {
           )}
         </Toolbar>
       </MuiThemedAppBar>
+
+      <AlertDialogSlide
+        open={openModal}
+        setOpen={setOpenModal}
+        dialogTitleText="Confirmar logout"
+        confirmButtonText="Sair"
+        confirmButtonAction={() => doLogout()}
+        cancelButtonText="Cancelar"
+        dialogTextContent="Deseja mesmo sair da aplicação?"
+      />
     </Box>
   );
 }
